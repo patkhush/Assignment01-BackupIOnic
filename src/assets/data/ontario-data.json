@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+  "date": "2025-06-10",
+  "totalCases": 145678,
+  "resolvedCases": 140000,
+  "totalDeaths": 3500,
+  "hospitalized": 500,
+  "icu": 120,
+  "icuVentilated": 75555
+}]
+}

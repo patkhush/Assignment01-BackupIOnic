@@ -1,0 +1,58 @@
+<ion-content>
+  <ion-card *ngIf="vaccineData.length > 0" class="summary-card">
+    <ion-card-header>
+      <ion-card-title>Ontario Summary of All Data</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Total doses administered:</strong> {{ totals.total_doses_administered | number }}</p>
+      <p><strong>Fully vaccinated individuals:</strong> {{ totals.total_individuals_fully_vaccinated | number }}</p>
+      <p><strong>Partially vaccinated individuals:</strong> {{ totals.total_individuals_partially_vaccinated | number }}</p>
+      <p><strong>Previous day doses administered:</strong> {{ totals.previous_day_total_doses_administered | number }}</p>
+      <p><strong>Previous day at least one dose:</strong> {{ totals.previous_day_at_least_one | number }}</p>
+      <p><strong>Total doses in fully vaccinated individuals:</strong> {{ totals.total_doses_in_fully_vaccinated_individuals | number }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="vaccineData.length > 0 && (userNotes | keyvalue).length > 0" class="user-notes-section">
+    <h2>User Notes</h2>
+    <div *ngFor="let note of userNotes | keyvalue">
+      <p><strong>{{ note.key }}:</strong> {{ note.value }}</p>
+    </div>
+  </div>
+
+  <ion-list>
+    <ng-container *ngIf="vaccineData.length > 0; else noData">
+      <ng-container *ngFor="let day of vaccineData; let i = index">
+        <ion-item (click)="toggleExpand(i)" button detail="false">
+          <ion-label>{{ day.report_date }}</ion-label>
+          <ion-icon slot="end" [name]="expandedIndex === i ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+        </ion-item>
+        <ion-item *ngIf="expandedIndex === i" lines="none">
+          <ion-card>
+            <ion-card-content>
+              <p><strong>Total doses administered:</strong> {{ day.total_doses_administered | number }}</p>
+              <p><strong>Fully vaccinated individuals:</strong> {{ day.total_individuals_fully_vaccinated | number }}</p>
+              <p><strong>Partially vaccinated individuals:</strong> {{ day.total_individuals_partially_vaccinated | number }}</p>
+              <p><strong>Previous day doses administered:</strong> {{ day.previous_day_total_doses_administered | number }}</p>
+              <p><strong>Previous day at least one dose:</strong> {{ day.previous_day_at_least_one | number }}</p>
+              <p><strong>Total doses in fully vaccinated individuals:</strong> {{ day.total_doses_in_fully_vaccinated_individuals | number }}</p>
+
+              <ion-textarea
+                placeholder="Add a note"
+                [(ngModel)]="noteInputs[day.report_date]"
+                autoGrow="true">
+              </ion-textarea>
+              <ion-button expand="block" size="small" (click)="saveNote(day.report_date)">
+                Save Note
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #noData>
+      <p class="error">No vaccine data available</p>
+    </ng-template>
+  </ion-list>
+</ion-content>

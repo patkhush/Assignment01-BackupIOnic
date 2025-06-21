@@ -1,0 +1,42 @@
+[
+  {
+    "pruid": 35,
+    "prname": "Ontario",
+    "date": "2021-01-31",
+    "active_cases": 532,
+    "cases_today": 3924,
+    "totalcases": "778972",
+    "total_recovered": 705659,
+    "deaths_today": 90,
+    "numdeaths": 20032,
+    "tested_today": 50138,
+    "total_tested": 17483364,
+    "percent_positive": 4.3,
+    "people_tested_per_million": 460025
+  },
+   {
+   "pruid": 48,
+   "prname": "Alberta",
+   "date": "2020-02-08",
+   "reporting_week": 6,
+   "reporting_year": 2020,
+   "update": 1,
+   "totalcases": "0",
+   "numtotal_last7": "0",
+   "ratecases_total": "0",
+   "numdeaths": 0,
+   "numdeaths_last7": 0,
+   "ratedeaths": 0,
+   "ratecases_last7": "0",
+   "ratedeaths_last7": 0,
+   "numtotal_last14": "0",
+   "numdeaths_last14": 0,
+   "ratetotal_last14": "0",
+   "ratedeaths_last14": 0,
+   "avgcases_last7": "0",
+   "avgincidence_last7": "0",
+   "avgdeaths_last7": 0,
+   "avgratedeaths_last7": 0
+ }
+  
+]

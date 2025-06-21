@@ -1,0 +1,75 @@
+ion-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  background-color: #ffffff;
+}
+
+.summary-card {
+  background-color: #e0f7fa;
+  border: 2px solid #00acc1;
+  box-shadow: 0 3px 10px rgba(0, 172, 193, 0.3);
+}
+
+.summary-card ion-card-title {
+  color: #007c91;
+}
+
+.summary-card ion-card-content p strong {
+  color: #007c91;
+}
+
+ion-card-header {
+  background-color: #f1f3f5;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+ion-card-title {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #343a40;
+}
+
+ion-card-content {
+  padding: 16px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+ion-card-content p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #495057;
+}
+
+ion-card-content p strong {
+  font-weight: 600;
+  color: #212529;
+}
+
+.user-notes-section {
+  margin: 0 16px 24px;
+  padding: 12px 16px;
+  background: #f0f9ff;
+  border: 1px solid #00acc1;
+  border-radius: 10px;
+}
+
+.user-notes-section h2 {
+  margin-bottom: 12px;
+  color: #007c91;
+}
+
+.user-notes-section p {
+  margin: 6px 0;
+  font-style: italic;
+  color: #055160;
+}
+
+.error {
+  color: #d9534f;
+  font-weight: bold;
+  padding: 10px 16px;
+  text-align: center;
+}
