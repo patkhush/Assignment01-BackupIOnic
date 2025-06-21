@@ -30,7 +30,7 @@ export class CanadaUpdatesComponent implements OnInit {
         return;
       }
 
-      // Find the latest date from the Canada data
+     
       const latestDate = canadaData.reduce(
         (latest, item) => !latest || item.date > latest ? item.date : latest,
         ''
@@ -42,8 +42,7 @@ export class CanadaUpdatesComponent implements OnInit {
         numdeaths_last7: 0,
         numdeaths: 0,
         avgdeaths_last7: 0,
-        date: latestDate  // <-- include date here
-      };
+        date: latestDate  };
 
       canadaData.forEach(item => {
         totals.numtotal_last7 += Number(item.numtotal_last7) || 0;
