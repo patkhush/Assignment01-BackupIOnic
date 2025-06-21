@@ -3,19 +3,16 @@
   <ion-card *ngIf="canadaSummary">
     <ion-card-header>
       <ion-card-title>Canada Summary</ion-card-title>
-      <ion-card-subtitle>COVID-19 Key<br>As of {{ canadaSummary.date }}</ion-card-subtitle>
+      <ion-card-subtitle>COVID-19 Key<br>As of {{ canadaSummary.date }}
+</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <p><strong>Cases (last 7 days):</strong> {{ canadaSummary.numtotal_last7 || 0 | number }}</p>
       <p><strong>Total Cases:</strong> {{ canadaSummary.totalcases || 0 | number }}</p>
-      <p><strong>Active Cases:</strong> 0</p>
-      <p><strong>Recovered:</strong> 0</p>
       <p><strong>Deaths (last 7 days):</strong> {{ canadaSummary.numdeaths_last7 || 0 | number }}</p>
       <p><strong>Total Deaths:</strong> {{ canadaSummary.numdeaths || 0 | number }}</p>
-      <p><strong>Tested Today:</strong> 0</p>
-      <p><strong>Total Tested:</strong> 0</p>
-      <p><strong>Percent Positive:</strong> 0.00%</p>
-      <p><strong>People Tested / 1M:</strong> 0</p>
+      
+      
     </ion-card-content>
   </ion-card>
 

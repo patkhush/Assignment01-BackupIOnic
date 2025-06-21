@@ -22,21 +22,49 @@ export class CanadaUpdatesComponent implements OnInit {
   }
 
   loadCanadaSummary() {
-    this.canadaService.getCanadaSummary().subscribe({
-      next: data => {
-        const canada = data.find(d => d.prname === 'Canada');
-        if (!canada) {
-          this.errorMessageCanada = 'Canada summary not found.';
-        } else {
-          this.canadaSummary = canada;
-        }
-      },
-      error: err => {
-        this.errorMessageCanada = 'Error loading Canada summary.';
-        console.error(err);
+  this.canadaService.getCanadaSummary().subscribe({
+    next: data => {
+      const canadaData = data.filter(d => d.prname === 'Canada');
+      if (canadaData.length === 0) {
+        this.errorMessageCanada = 'Canada summary not found.';
+        return;
       }
-    });
-  }
+
+      // Find the latest date from the Canada data
+      const latestDate = canadaData.reduce(
+        (latest, item) => !latest || item.date > latest ? item.date : latest,
+        ''
+      );
+
+      const totals = {
+        numtotal_last7: 0,
+        totalcases: 0,
+        numdeaths_last7: 0,
+        numdeaths: 0,
+        avgdeaths_last7: 0,
+        date: latestDate  // <-- include date here
+      };
+
+      canadaData.forEach(item => {
+        totals.numtotal_last7 += Number(item.numtotal_last7) || 0;
+        totals.totalcases += Number(item.totalcases) || 0;
+        totals.numdeaths_last7 += Number(item.numdeaths_last7) || 0;
+        totals.numdeaths += Number(item.numdeaths) || 0;
+        totals.avgdeaths_last7 += Number(item.avgdeaths_last7) || 0;
+      });
+
+      totals.avgdeaths_last7 = totals.avgdeaths_last7 / canadaData.length;
+
+      this.canadaSummary = totals;
+    },
+    error: err => {
+      this.errorMessageCanada = 'Error loading Canada summary.';
+      console.error(err);
+    }
+  });
+}
+
+
 
   loadOntarioSummary() {
   this.canadaService.getOntarioData().subscribe({
